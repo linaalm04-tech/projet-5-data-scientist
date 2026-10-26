@@ -41,7 +41,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt psycopg2-binary
 
-      - name: Lancer les tests
+      - name: Lancer les tests :
+      - name : Créer les tables de la base de données
+        run : python -c "from src.create_db import create_tables; create_tables()"
         run: python -m pytest
 
 
