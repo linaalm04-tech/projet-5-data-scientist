@@ -1,3 +1,4 @@
+
 name: CI
 
 on:
@@ -7,6 +8,24 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: projet5
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d projet5"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URL: postgresql+psycopg2://postgres:postgres@localhost:5432/projet5
 
     steps:
       - name: Récupérer le code
@@ -24,7 +43,7 @@ jobs:
 
       - name: Lancer les tests
         run: python -m pytest
-        
+
 
 
 
