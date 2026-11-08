@@ -3,3 +3,10 @@ __pycache__/
 .coverage
 .pytest_cache/
 htmlcov/
+.env
+.env.*
+!.env.example
+.DS_Store
+__MACOSX/
+*.pyc
+employees_export.csv
