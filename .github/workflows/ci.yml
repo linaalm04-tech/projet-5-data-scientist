@@ -25,6 +25,7 @@ jobs:
 
     env:
       DATABASE_URL: postgresql+psycopg2://postgres:postgres@localhost:5432/project5
+      API_KEY: ${{ secrets.API_KEY }}
 
     steps:
       - name: Récupérer le code
@@ -44,9 +45,7 @@ jobs:
         run: python -c "from src.create_db import create_tables; create_tables()"
 
       - name: Lancer les tests
-      env:
-        API_KEY: ${{ secrets.API_KEY }}
-      run: python -m pytest
+        run: python -m pytest
 
 
 
