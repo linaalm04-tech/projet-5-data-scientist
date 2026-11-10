@@ -46,7 +46,7 @@ jobs:
       - name: Lancer les tests
       env:
         API_KEY: ${{ secrets.API_KEY }}
-        run: python -m pytest
+      run: python -m pytest
 
 
 
